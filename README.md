@@ -8,7 +8,7 @@ Orchestrated gRPC chat
 
 ### Generate python protos
 
-Python protos are generate using docker.
+Python protos are generated using Docker.
 
 Using a makefile cmd will be enough to run the process:
 
