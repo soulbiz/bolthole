@@ -1,12 +1,10 @@
 IMAGE_NAME := protoc
 TAG        := python
 
-.GRPCUI    := $(shell command -v grpcui 2> /dev/null)
-
 proto-docker-image:
-	docker build -t $(IMAGE_NAME):$(TAG) -f proto/Dockerfile .
+	docker build -t $(IMAGE_NAME):$(TAG) -f protos/docker/Dockerfile .
 
 proto-gen:
-  #TODOO
+	docker run -ti --rm -v $(shell pwd)/:/usr/src $(IMAGE_NAME):$(TAG_SBT) bash -c "python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. protos/*.proto "
 
 proto: |proto-docker-image proto-gen
