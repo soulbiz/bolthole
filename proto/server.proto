@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package bh_server;
+package proto;
 
 message User {
     string id = 1;
