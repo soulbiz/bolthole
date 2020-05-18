@@ -1,0 +1,19 @@
+name: Hadolint for Dockerfiles
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Hadolint
+        uses: brpaz/hadolint-action@v1.1.0
+        with:
+          dockerfile: protos/docker/Dockerfile
