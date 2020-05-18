@@ -1,9 +1,5 @@
-FROM grpc/python:0.11
+FROM python:3.7
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-
-ONBUILD COPY requirements.txt /usr/src/app/
-ONBUILD RUN pip install --no-cache-dir -r requirements.txt
-
-ONBUILD COPY . /usr/src/app
+ENV GRPC_PYTHON_VERSION 1.15.0
+RUN python -m pip install --upgrade pip
+RUN pip install grpcio==${GRPC_PYTHON_VERSION} grpcio-tools==${GRPC_PYTHON_VERSION} grpcio-reflection==${GRPC_PYTHON_VERSION} grpcio-health-checking==${GRPC_PYTHON_VERSION} grpcio-testing==${GRPC_PYTHON_VERSION}
