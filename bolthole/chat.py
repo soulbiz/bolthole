@@ -9,9 +9,16 @@
 
 import bolthole_pb2_grpc
 
+# Define max queue size (zero or less is infinite)
+__MAX_QUEUE_SIZE__ = 0
+
 
 class ChatServicer(bolthole_pb2_grpc.ChatServicer):
     """Class to handle the Chat service implementation
+
+    Attributes
+    ----------
+    __queues__ : list with users chat history queues
 
     Methods
     -------
@@ -21,4 +28,5 @@ class ChatServicer(bolthole_pb2_grpc.ChatServicer):
     def __init__(self):
         """Constructor
         """
-        pass
+        # Initialize queues
+        self.__queues__ = []
