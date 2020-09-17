@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0e\x62olthole.proto\x12\x08\x62olthole\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\" \n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"7\n\x07\x43onnect\x12\x1c\n\x04user\x18\x01 \x01(\x0b\x32\x0e.bolthole.User\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"S\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12+\n\x07sent_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2\x80\x01\n\x04\x43hat\x12<\n\x10GetMessageStream\x12\x11.bolthole.Connect\x1a\x11.bolthole.Message\"\x00\x30\x01\x12:\n\x0bSendMessage\x12\x11.bolthole.Message\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0e\x62olthole.proto\x12\x08\x62olthole\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\" \n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"7\n\x07\x43onnect\x12\x1c\n\x04user\x18\x01 \x01(\x0b\x32\x0e.bolthole.User\x12\x0e\n\x06\x61\x63tive\x18\x02 \x01(\x08\"S\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12+\n\x07sent_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2z\n\x04\x43hat\x12\x36\n\nGetMessage\x12\x11.bolthole.Connect\x1a\x11.bolthole.Message\"\x00\x30\x01\x12:\n\x0bSendMessage\x12\x11.bolthole.Message\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -188,12 +188,12 @@ _CHAT = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=267,
-  serialized_end=395,
+  serialized_start=266,
+  serialized_end=388,
   methods=[
   _descriptor.MethodDescriptor(
-    name='GetMessageStream',
-    full_name='bolthole.Chat.GetMessageStream',
+    name='GetMessage',
+    full_name='bolthole.Chat.GetMessage',
     index=0,
     containing_service=None,
     input_type=_CONNECT,

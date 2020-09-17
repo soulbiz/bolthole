@@ -20,7 +20,7 @@ package bolthole;
 service Chat {
 
     /* Returns a stream of received messages */
-    rpc GetMessageStream(Connect) returns (stream Message) {}
+    rpc GetMessage(Connect) returns (stream Message) {}
 
     /* Sends a message to the chat */
     rpc SendMessage(Message) returns (google.protobuf.Empty) {}

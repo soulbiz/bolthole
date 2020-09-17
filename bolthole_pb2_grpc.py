@@ -16,8 +16,8 @@ class ChatStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetMessageStream = channel.unary_stream(
-                '/bolthole.Chat/GetMessageStream',
+        self.GetMessage = channel.unary_stream(
+                '/bolthole.Chat/GetMessage',
                 request_serializer=bolthole__pb2.Connect.SerializeToString,
                 response_deserializer=bolthole__pb2.Message.FromString,
                 )
@@ -32,7 +32,7 @@ class ChatServicer(object):
     """Chat service definition 
     """
 
-    def GetMessageStream(self, request, context):
+    def GetMessage(self, request, context):
         """Returns a stream of received messages 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -49,8 +49,8 @@ class ChatServicer(object):
 
 def add_ChatServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetMessageStream': grpc.unary_stream_rpc_method_handler(
-                    servicer.GetMessageStream,
+            'GetMessage': grpc.unary_stream_rpc_method_handler(
+                    servicer.GetMessage,
                     request_deserializer=bolthole__pb2.Connect.FromString,
                     response_serializer=bolthole__pb2.Message.SerializeToString,
             ),
@@ -71,7 +71,7 @@ class Chat(object):
     """
 
     @staticmethod
-    def GetMessageStream(request,
+    def GetMessage(request,
             target,
             options=(),
             channel_credentials=None,
@@ -81,7 +81,7 @@ class Chat(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/bolthole.Chat/GetMessageStream',
+        return grpc.experimental.unary_stream(request, target, '/bolthole.Chat/GetMessage',
             bolthole__pb2.Connect.SerializeToString,
             bolthole__pb2.Message.FromString,
             options, channel_credentials,
