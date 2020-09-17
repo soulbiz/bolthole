@@ -1,26 +1,47 @@
+/*
+   bolthole Orchestrated gRPC chat
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+ */
+
 syntax = "proto3";
 
-package proto;
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto"
 
+package bolthole;
+
+/* Chat service definition */
+service Chat {
+
+    /* Returns a stream of received messages */
+    rpc GetMessageStream(Connect) returns (stream Message) {}
+
+    /* Sends a message to the chat */
+    rpc SendMessage(Message) returns (google.protobuf.Empty) {}
+
+}
+
+/* User message */
 message User {
     string id = 1;
     string name = 2;
-  }
+}
 
-  message Connect {
+/* Connect message */
+message Connect {
     User user = 1;
     bool active = 2;
-  }
+}
 
-  message Message {
+/* Chat message structure */
+message Message {
     string id = 1;
     string content = 2;
-    string timestamp = 3;
-  }
-
-  message Nothing {}
-
-service ChatService {
-    rpc GetMessageStream(Connect) returns (stream Message);
-    rpc SendMessage(Message) returns (Nothing);
+    google.protobuf.Timestamp sent_at = 3;
 }
