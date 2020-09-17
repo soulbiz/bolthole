@@ -10,6 +10,9 @@
 from concurrent import futures
 import grpc
 
+import bolthole_pb2_grpc
+from bolthole.chat import ChatServicer
+
 # Define max number of workers
 __MAX_THREAD_POOL_EXECUTOR_WORKERS__ = 10
 
@@ -26,6 +29,8 @@ def serve(address):
             max_workers=__MAX_THREAD_POOL_EXECUTOR_WORKERS__
         )
     )
+
+    bolthole_pb2_grpc.add_ChatServicer_to_server(ChatServicer(), server)
 
     # TODO: secure port TLS
     server.add_insecure_port(address)
